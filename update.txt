@@ -1,0 +1,8 @@
+29-08-2022
+- nieuwe svelte reop
+- layout gemaakt met 'fetum'
+- tailwind geinstalleerd
+- stores gemaakt
+- lijsten produkten / categorien / types gemaakt
+- zoekfunctie producten door te klikken gemaakt
+ 
