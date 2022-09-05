@@ -1,13 +1,17 @@
 <script>
 	import { supabase } from '../stores/supabase';
-
+	
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 
 	export let produkt;
 	export let editable = false;
 
+	export let ingeklapt=false;
+	
 	let opslaan;
+
+
 
 	let afbeelding;
 	let nieuweAfbeelding;
@@ -146,6 +150,7 @@
 		/>
 	{/if}
 
+	{#if ingeklapt}
 	{#if editable}
 		<div
 			class="border-solid border-2"
@@ -160,6 +165,7 @@
 		<div class="border-solid border-2">
 			{@html produkt.omschrijving}
 		</div>
+	{/if}
 	{/if}
 
 	{#each produkt.prijzen as prijs}
