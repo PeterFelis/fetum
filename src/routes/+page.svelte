@@ -1,6 +1,6 @@
 <script>
 	import Produkt from '$lib/ProduktKaart.svelte';
-	import Layout from './+layout.svelte';
+
 
 	export let data; // data van de serverside load!!
 	// op volgorder zetten, server levert op id aan
@@ -18,8 +18,9 @@
 
 	$: produkten = volgorde;
 	$: cats = categorien;
+	let types=[];
 
-	let types = [];
+	//let types = [];
 	let produkttype = '';
 	let geselecteerdecategorie;
 	let editable = false;
@@ -78,8 +79,14 @@
 							{produkt}
 							{editable}
 							on:categorie={(e) => {
-								cats[cats.indexOf(geselecteerdecategorie)] = e.detail.text;
+								cats[cats.indexOf(geselecteerdecategorie)] = e.detail.text;								
 								geselecteerdecategorie = e.detail.text;
+							}}
+							on:typ={(e) => {
+								console.log(e.detail.text)
+								types[types.indexOf(e.detail.text.huidig)] = e.detail.text.nieuw;
+								produkttype= e.detail.text.nieuw;
+								types=types;
 							}}
 						/>
 					{:else if produkt.type == produkttype}
@@ -89,6 +96,13 @@
 							on:categorie={(e) => {
 								cats[cats.indexOf(geselecteerdecategorie)] = e.detail.text;
 								geselecteerdecategorie = e.detail.text;
+							}}
+							on:typ={(e) => {
+								console.log(e.detail.text);
+								types[types.indexOf(e.detail.text.huidig)] = e.detail.text.nieuw;
+								produkttype= e.detail.text.nieuw;
+								types=types;
+								
 							}}
 						/>
 					{/if}

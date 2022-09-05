@@ -12,6 +12,8 @@
 	let afbeelding;
 	let nieuweAfbeelding;
 
+	let huidigeType=produkt.type;
+
 	const opladenAfbeelding = async (img) => {
 		let { data, error } = await supabase.storage.from('produkten').upload('test.jpg', img, {
 			cacheControl: '3600',
@@ -22,7 +24,7 @@
 	};
 
 	$: {
-		console.log(nieuweAfbeelding);
+		//console.log(nieuweAfbeelding);
 		if (nieuweAfbeelding) opladenAfbeelding(URL.createObjectURL(nieuweAfbeelding));
 	}
 
@@ -64,7 +66,12 @@
 		}
 
 		if (wat == 'type') {
-			await supabase.from('producten').update({ type: produkt.type }).eq('id', produkt.id);
+			await supabase.from('producten')
+			.update({ type: produkt.type })
+			.eq('id', produkt.id);
+			
+			dispatch('typ', { text: {huidig:huidigeType,nieuw:produkt.type}});
+			huidigeType=produkt.type;
 			return;
 		}
 		console.log(wat);
