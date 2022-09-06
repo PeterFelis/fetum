@@ -3,10 +3,10 @@
 </svelte:head>
 
 <div class="bg-achtergrond">
-	<div class="text-donker grid grid-cols-2 container mx-auto">
+	<div class="text-heeldonkergroen grid grid-cols-2 container mx-auto">
 		<div class="flex flex-col justify-center">
-			<h1 class="text-center text-3xl md:text-6xl font-Raleway my-4">Contact info</h1>
-			<p class="text-center">Altijd handig</p>
+			<h1 class="text-center my-4">Contact info</h1>
+			<h3 class="text-center">Altijd handig</h3>
 		</div>
 
 		<div class="grid grid-cols-2 py-16 mx-auto text-sm pr-20">

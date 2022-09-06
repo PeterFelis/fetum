@@ -10,7 +10,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        Oswald: ['Oswald', 'sans-serif'],
+        Ubuntu: ['Ubuntu', 'sans-serif'],
         Roboto: ['Roboto', 'sans-serif']
       },
       colors: {
@@ -23,8 +23,6 @@ module.exports = {
         'achtergrond': '#F8F6F2',
         'oranje': "#F5B06F"
       },
-
-
     },
   },
   plugins: [],

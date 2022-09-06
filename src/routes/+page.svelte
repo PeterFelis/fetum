@@ -52,7 +52,7 @@
 
 <div class="container text-donker flex mx-auto h50 py-28">
 	<div class="text-xl basis-1/2 text-heeldonkergroen gap-4 flex flex-col items-center">
-		<h2 class="text-7xl xl:text-9xl font-Valera">Hai!</h2>
+		<h2 class="text-7xl xl:text-9xl font-Ubuntu">Hai!</h2>
 		<h2 class="text-4xl">Wij zijn Fetum.</h2>
 	</div>
 	<div class="basis-1/2 text-heeldonkergroen flex flex-col items-start gap-5 px-20">
