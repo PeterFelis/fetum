@@ -1,22 +1,20 @@
 <script>
 	import { supabase } from '../stores/supabase';
-	
+
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 
 	export let produkt;
+
 	export let editable = false;
+	export let ingeklapt = false;
 
-	export let ingeklapt=false;
-	
 	let opslaan;
-
-
 
 	let afbeelding;
 	let nieuweAfbeelding;
 
-	let huidigeType=produkt.type;
+	let huidigeType = produkt.type;
 
 	const opladenAfbeelding = async (img) => {
 		let { data, error } = await supabase.storage.from('produkten').upload('test.jpg', img, {
@@ -70,12 +68,10 @@
 		}
 
 		if (wat == 'type') {
-			await supabase.from('producten')
-			.update({ type: produkt.type })
-			.eq('id', produkt.id);
-			
-			dispatch('typ', { text: {huidig:huidigeType,nieuw:produkt.type}});
-			huidigeType=produkt.type;
+			await supabase.from('producten').update({ type: produkt.type }).eq('id', produkt.id);
+
+			dispatch('typ', { text: { huidig: huidigeType, nieuw: produkt.type } });
+			huidigeType = produkt.type;
 			return;
 		}
 		console.log(wat);
@@ -91,18 +87,20 @@
 	};
 </script>
 
-<div class="container bg-slate-400">
+<div class="container flex flex-col" class:bg-slate-400={editable}>
 	{#if editable}
-		<h2
-			title="(model naam)"
-			class="font-Oswald text-2xl h-10 w-fit"
-			contenteditable="true"
-			bind:innerHTML={produkt.model}
-			on:keyup={() => {
-				if (opslaan) clearTimeout(opslaan);
-				opslaan = setTimeout(() => update('model'), 500);
-			}}
-		/>
+		<div class="flex">
+			<h2>Type nummer</h2>
+			<h2
+				class="font-Oswald text-2xl h-10 w-fit"
+				contenteditable="true"
+				bind:innerHTML={produkt.model}
+				on:keyup={() => {
+					if (opslaan) clearTimeout(opslaan);
+					opslaan = setTimeout(() => update('model'), 500);
+				}}
+			/>
+		</div>
 	{:else}
 		<h2 class="font-Oswald text-2xl h-10">
 			{@html produkt.model}
@@ -110,8 +108,8 @@
 	{/if}
 
 	{#if editable}
+		<h3>headline</h3>
 		<h3
-			title="(headline)"
 			class="text-base w-fit"
 			contenteditable="true"
 			bind:innerHTML={produkt.headline}
@@ -151,21 +149,21 @@
 	{/if}
 
 	{#if ingeklapt}
-	{#if editable}
-		<div
-			class="border-solid border-2"
-			contenteditable="true"
-			bind:innerHTML={produkt.omschrijving}
-			on:keyup={() => {
-				if (opslaan) clearTimeout(opslaan);
-				opslaan = setTimeout(() => update('omschrijving'), 500);
-			}}
-		/>
-	{:else}
-		<div class="border-solid border-2">
-			{@html produkt.omschrijving}
-		</div>
-	{/if}
+		{#if editable}
+			<div
+				class="border-solid border-2"
+				contenteditable="true"
+				bind:innerHTML={produkt.omschrijving}
+				on:keyup={() => {
+					if (opslaan) clearTimeout(opslaan);
+					opslaan = setTimeout(() => update('omschrijving'), 500);
+				}}
+			/>
+		{:else}
+			<div class="border-solid border-2">
+				{@html produkt.omschrijving}
+			</div>
+		{/if}
 	{/if}
 
 	{#each produkt.prijzen as prijs}

@@ -114,7 +114,7 @@
 
 <div class="container mx-auto">
 	editabtle <input type="checkbox" bind:checked={editable} />
-	ingeklapt <input type="checkbox" checked={ingeklapt} />
+	ingeklapt <input type="checkbox" bind:checked={ingeklapt} />
 </div>
 <div class="container mx-auto flex flex-row">
 	<div class="flex flex-col basis-1/4" on:click={() => (produkttype = '')}>

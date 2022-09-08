@@ -1,5 +1,6 @@
 <script>
 	import '../app.css';
+	import Menu from '$lib/Menu.svelte';
 </script>
 
 <svelte:head>
@@ -12,6 +13,7 @@
 		<img src="../fetumlogo.png" alt="fetum| Hoofdtelefoons" />
 		<div class="text-base ">0174 769-132</div>
 	</div>
+	<Menu />
 
 	<slot />
 </div>
