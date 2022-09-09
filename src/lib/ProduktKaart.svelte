@@ -1,4 +1,5 @@
 <script>
+	// met opladen afbeelding naar bucket
 	import { supabase } from '../stores/supabase';
 
 	import { createEventDispatcher } from 'svelte';
