@@ -1,3 +1,11 @@
 import { writable } from "svelte/store";
 
-export const ingeklapt = writable([]);
+export const settings = writable(
+    {
+        geselecteerdecategorie: 'hoofdtelefoons',
+        test: 'test'
+    }
+
+);
+
+export default settings

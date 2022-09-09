@@ -12,23 +12,14 @@
 	let opslaan;
 
 	let afbeelding;
-	let nieuweAfbeelding;
+	let files;
+	let naamAfbeelding;
 
 	let huidigeType = produkt.type;
 
-	const opladenAfbeelding = async (img) => {
-		let { data, error } = await supabase.storage.from('produkten').upload('test.jpg', img, {
-			cacheControl: '3600',
-			upsert: false
-		});
-		console.log(data);
-		console.log(error);
+	const opladenAfbeelding = async () => {
+		let { data, error } = await supabase.storage.from('produkten').upload(files[0].name, files[0]);
 	};
-
-	$: {
-		//console.log(nieuweAfbeelding);
-		if (nieuweAfbeelding) opladenAfbeelding(URL.createObjectURL(nieuweAfbeelding));
-	}
 
 	const ophalenAfbeelding = async (afbeelding) => {
 		const { data, error } = await supabase.storage.from('produkten').download(afbeelding);
@@ -87,12 +78,11 @@
 	};
 </script>
 
-<div class="container flex flex-col" class:bg-slate-400={editable}>
+<div class="container flex flex-col">
 	{#if editable}
 		<div class="flex">
-			<h2>Type nummer</h2>
 			<h2
-				class="font-Oswald text-2xl h-10 w-fit"
+				class="font-Oswald text-2xl h-10 w-4/5"
 				contenteditable="true"
 				bind:innerHTML={produkt.model}
 				on:keyup={() => {
@@ -100,67 +90,79 @@
 					opslaan = setTimeout(() => update('model'), 500);
 				}}
 			/>
+			<div class="w-1/5">(model type nummer)</div>
 		</div>
 	{:else}
-		<h2 class="font-Oswald text-2xl h-10">
+		<h2 class="font-Oswald text-2xl h-10 w-fitt">
 			{@html produkt.model}
 		</h2>
 	{/if}
 
 	{#if editable}
-		<h3>headline</h3>
-		<h3
-			class="text-base w-fit"
-			contenteditable="true"
-			bind:innerHTML={produkt.headline}
-			on:keyup={() => {
-				if (opslaan) clearTimeout(opslaan);
-				opslaan = setTimeout(() => update('headline'), 500);
-			}}
-		/>
+		<div class="flex">
+			<h3
+				class="text-base w-4/5"
+				contenteditable="true"
+				bind:innerHTML={produkt.headline}
+				on:keyup={() => {
+					if (opslaan) clearTimeout(opslaan);
+					opslaan = setTimeout(() => update('headline'), 500);
+				}}
+			/>
+			<div class="w-1/5">(headline)</div>
+		</div>
 	{:else}
 		<h3>{@html produkt.headline}</h3>
 	{/if}
 
 	{#if editable}
-		<h3
-			title="(categorie)"
-			class="text-base w-fit"
-			contenteditable="true"
-			bind:innerHTML={produkt.categorie}
-			on:keyup={() => {
-				if (opslaan) clearTimeout(opslaan);
-				opslaan = setTimeout(() => update('categorie'), 500);
-			}}
-		/>
+		<div class="flex">
+			<h3
+				title="(categorie)"
+				class="text-base w-4/5"
+				contenteditable="true"
+				bind:innerHTML={produkt.categorie}
+				on:keyup={() => {
+					if (opslaan) clearTimeout(opslaan);
+					opslaan = setTimeout(() => update('categorie'), 500);
+				}}
+			/>
+			<div class="w-1/5">(categorie)</div>
+		</div>
 	{/if}
 
 	{#if editable}
-		<h3
-			title="(type)"
-			class="text-base w-fit"
-			contenteditable="true"
-			bind:innerHTML={produkt.type}
-			on:keyup={() => {
-				if (opslaan) clearTimeout(opslaan);
-				opslaan = setTimeout(() => update('type'), 500);
-			}}
-		/>
-	{/if}
-
-	{#if ingeklapt}
-		{#if editable}
-			<div
-				class="border-solid border-2"
+		<div class="flex">
+			<h3
+				title="(type)"
+				class="text-base w-4/5"
 				contenteditable="true"
-				bind:innerHTML={produkt.omschrijving}
+				bind:innerHTML={produkt.type}
 				on:keyup={() => {
 					if (opslaan) clearTimeout(opslaan);
-					opslaan = setTimeout(() => update('omschrijving'), 500);
+					opslaan = setTimeout(() => update('type'), 500);
 				}}
 			/>
+			<div class="w-1/5">(type)</div>
+		</div>
+	{/if}
+
+	{#if !ingeklapt}
+		{#if editable}
+			<div class="flex">
+				<div
+					class="w-4/5"
+					contenteditable="true"
+					bind:innerHTML={produkt.omschrijving}
+					on:keyup={() => {
+						if (opslaan) clearTimeout(opslaan);
+						opslaan = setTimeout(() => update('omschrijving'), 500);
+					}}
+				/>
+				<div class="w-1/5">(omschrijving)</div>
+			</div>
 		{:else}
-			<div class="border-solid border-2">
+			<div>
 				{@html produkt.omschrijving}
 			</div>
 		{/if}
@@ -176,5 +178,12 @@
 		{/await}
 	{/if}
 
-	<input type="file" bind:value={nieuweAfbeelding} accept="image/*" />
+	<input
+		type="file"
+		bind:files
+		on:change={() => {
+			opladenAfbeelding();
+		}}
+		accept="image/*"
+	/>
 </div>

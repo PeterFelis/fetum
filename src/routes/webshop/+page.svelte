@@ -1,6 +1,7 @@
 <script>
 	import Produkt from '$lib/ProduktKaart.svelte';
 	import { supabase } from '../../stores/supabase';
+	import settings from '../../stores/instellingen';
 
 	export let data; // data van de serverside load!!
 
@@ -23,7 +24,7 @@
 
 	let types = [];
 	let produkttype = '';
-	let geselecteerdecategorie;
+	let geselecteerdecategorie = $settings.geselecteerdecategorie;
 
 	let editable = false;
 	let ingeklapt = false;
@@ -112,7 +113,7 @@
 	};
 </script>
 
-<div class="container mx-auto">
+<div class="container mx-auto mt-12">
 	editabtle <input type="checkbox" bind:checked={editable} />
 	ingeklapt <input type="checkbox" bind:checked={ingeklapt} />
 </div>
@@ -120,7 +121,7 @@
 	<div class="flex flex-col basis-1/4" on:click={() => (produkttype = '')}>
 		<div>
 			<div>
-				<h2 class="font-bold">categorien</h2>
+				<h2 class="font-bold">Categorien</h2>
 				<ul class="lijst" bind:this={lijst}>
 					{#await cats then cats}
 						{#each cats as cat}
@@ -141,7 +142,7 @@
 				</ul>
 			</div>
 			<div>
-				<h2 class="font-bold">types</h2>
+				<h2 class="font-bold">Types</h2>
 				{#if produkten}
 					<ul bind:this={typeLijstOpform}>
 						{#each types as type}
@@ -163,7 +164,13 @@
 	</div>
 
 	<div class="basis-3/4">
-		<h2 class="font-bold">producten</h2>
+		<h2 class="font-bold">
+			{geselecteerdecategorie}.
+
+			{#if produkttype}
+				-->{produkttype}
+			{/if}
+		</h2>
 		{#await produkten then produkten}
 			{#each produkten as produkt}
 				{#if produkt.categorie == geselecteerdecategorie}
