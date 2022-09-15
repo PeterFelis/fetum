@@ -2,18 +2,17 @@
 	<title>Leverigsvoorwaarden - hele kleine lettertjes | Fetum</title>
 </svelte:head>
 
-<div class="pt-20 bg-achtergrond">
-	<div class="text-heeldonkergroen grid grid-cols-2 container mx-auto">
-		<div class="flex flex-col justify-center gap-8">
-			<h1 class="text-center">Leverings<br />voorwaarden</h1>
-			<h3 class="text-center">De kleine lettertjes.<br /> Kunnen we ook niets aan doen.</h3>
+<div class="container grid-2 h75 py8">
+		<div>
+			<h1 class="groot center">Leverings<br />voorwaarden</h1>
+			<h2 class="center">De kleine lettertjes.<br /> Kunnen we ook niets aan doen.</h2>
 		</div>
-		<div class="w-full">
-			<img src="/afbeeldingen/hp188.png" />
+		<div>
+			<img class="parentfit imgscale" src="/afbeeldingen/hp188.png" />
 		</div>
-	</div>
+</div>
 
-	<div class="container p-8 mx-auto columns-1 md:columns-3 gap-8 font-Raleway">
+	<div class="container cols py8">
 		<p>Fetum b.v, Grote waard 36, Honselersdijk hierna te noemen: gebruiker</p>
 		<p>
 			<span class="font-bold">Artikel 1 Definities</span>
@@ -317,7 +316,7 @@
 			totstandkomen van de overeenkomst.
 		</p>
 	</div>
-</div>
+
 
 <style>
 	p {

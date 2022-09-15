@@ -2,68 +2,79 @@
 	<title>Hoi! start hier | Fetum</title>
 </svelte:head>
 
-<div
-	class="h-screen w-screen bg-center bg-contain bg-no-repeat lg:bg-cover"
-	style="background-image: url('/afbeeldingen/hp-136.jpg')"
->
-	<div class="absolute bottom-0 left-0 w-full h-1/6 flex flex-col justify-center">
-		<p class="w-full text-donkergroen text-2xl info text-center px-8">
+<div class="h100 w100">
+	<img
+	class="parentfit imgscale"
+	src="/afbeeldingen/hp-136.jpg"
+	alt="HP-136 degelijke hoofdtelefoon met opbergtas"
+	/>
+	<h1 class="introText px1">
 			Hoofdtelefoons en electronica voor zorg, educatie en iedereen die we van dienst kunnen zijn.
-		</p>
+	</h1>
+
+</div>
+
+<div class="produkten">
+	
+	<div class="svgblob">
+		<div class='rot'>
+			<img
+				class="parentfit imgfit"
+				src="/afbeeldingen/hp188.png"
+				alt="hp-188"
+				/>
+			<h2>Hoofdtelefoons</h2>
+		</div>
+	</div>
+
+		
+	<div class="svgblob">
+		<div class='rot'>
+			<img
+				class="parentfit imgfitcss"
+				src="/afbeeldingen/hp-32.png"
+				alt="hp32"
+				/>
+			<h2>Oortjes</h2>
+		</div>
+	</div>
+
+	<div class="svgblob">
+		<div class='rot'>
+			<img
+				class="parentfit imgfitcss"
+				src="/afbeeldingen/i40.png"
+				alt="i-40"
+				/>
+			<h2>Doosjes</h2>
+		</div>
 	</div>
 </div>
 
-<div class="w-full bg-paars">
-	<div class="px-16 py-32 mx-auto grid grid-rows-3 md:grid-cols-3 md:grid-rows-1 text-center">
-		<div class="relative">
-			<div class="svgblob bg-white bg-opacity-20 duration-1000 hover:rotate-180">
-				<img
-					class="p-8 object-contain duration-1000 hover:-rotate-180"
-					src="/afbeeldingen/hp188.png"
-					alt="hp-188"
-				/>
-			</div>
-			<h2 class="w-full text-center text-2xl text-heeldonkergroen">Hoofdtelefoons</h2>
-		</div>
 
-		<div class="relative">
-			<div class="svgblob bg-white bg-opacity-20 duration-1000 hover:rotate-180">
-				<img
-					class="p-20 object-contain duration-1000 hover:-rotate-180"
-					src="/afbeeldingen/hp-32.png"
-					alt="hp32"
-				/>
-			</div>
-			<h2 class="w-full text-center text-2xl text-heeldonkergroen">Oortjes</h2>
-		</div>
 
-		<div class="relative">
-			<div class="svgblob bg-white bg-opacity-20 duration-1000 hover:rotate-180">
-				<img
-					class="p-6 object-contain duration-1000 hover:-rotate-180"
-					src="/afbeeldingen/i40.png"
-					alt="i-40"
-				/>
-			</div>
-			<h2 class="w-full text-center text-2xl text-heeldonkergroen">Doosjes</h2>
-		</div>
+<div class="container grid-2">
+	<div>
+		<h2 class="groot">Hai!</h2>
+		<h2>Wij zijn Fetum.</h2>
 	</div>
-</div>
-
-<div class="container text-donker flex mx-auto h50 py-28">
-	<div class="text-xl basis-1/2 text-heeldonkergroen gap-4 flex flex-col items-center">
-		<h2 class="text-7xl xl:text-9xl font-Ubuntu">Hai!</h2>
-		<h2 class="text-4xl">Wij zijn Fetum.</h2>
-	</div>
-	<div class="basis-1/2 text-heeldonkergroen flex flex-col items-start gap-5 px-20">
-		<p class="text-2xl">Wij leveren alles rond de computer op school.</p>
-		<p class="text-base">
+	<div>
+		<h2>Wij leveren alles rond de computer op school.</h2>
+		<p>
 			De nadruk ligt op hoofdtelefoons en oortjes. Van budgetuitvoeringen voor grootverbruikers in
 			de zorg tot op maat gemaakt voor het onderwijs.
 		</p>
-		<p class="mt-2">We zijn u graag van dienst</p>
-		<button class="border text-white bg-paars rounded-lg p-4 mt-16">Wat doen wij allemaal</button>
+		<h2>We zijn u graag van dienst</h2>
+		<button class="my8">Wat doen wij allemaal</button>
 	</div>
+</div>
+
+<div>
+	<img
+		class="parentfit imgfitw"
+		src="/afbeeldingen/muis.png"
+		alt="oranje draadloze muis"
+	/>
 </div>
 
 <svg width="0" height="0">
@@ -78,18 +89,56 @@
 	</defs>
 </svg>
 
-<div class="w-full">
-	<img
-		class="h-full object-cover object-center w-full "
-		src="/afbeeldingen/muis.png"
-		alt="oranje draadloze muis"
-	/>
-</div>
+
 
 <style>
+
+
+.introText{
+		text-align: center;
+		position: absolute;
+		bottom: 10rem;
+		left: 0rem;
+		width: 100%;
+	}
+
+.produkten{
+		background-color: var(--paars);
+		display: grid;
+		grid-template-columns: 1fr;
+		gap:10rem;
+	}
 	.svgblob {
 		clip-path: url(#clip);
 		width: 100%;
 		height: auto;
+		background: rgba(255,255,255,0.05);
+		padding:20%;
+		transition:all 1s ease-in-out;
+		transform: scale(0.8);
+		
 	}
+	.svgblob:hover{
+		transform:rotate(180deg) scale(1.1);
+		background: rgba(255,255,255,0.3);
+	}
+	.rot{
+		transition:all 1s ease-in-out;
+	}
+	.svgblob:hover .rot{
+		transform:rotate(-180deg);
+
+	}
+
+
+
+@media (min-width:700px){
+
+	.produkten{
+		grid-template-columns: repeat(3,1fr);
+	}
+
+	
+	
+}	
 </style>

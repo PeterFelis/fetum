@@ -13,17 +13,34 @@
 	let opslaan;
 
 	let afbeelding;
+	
 	let files;
-	let naamAfbeelding;
 
 	let huidigeType = produkt.type;
 
-	const opladenAfbeelding = async () => {
+	const bijwerkenAfbeelding = async () =>{
 		let { data, error } = await supabase.storage.from('produkten').upload(files[0].name, files[0]);
-	};
+		if (error) {
+			console.log('bijwerkenAfbeelding->storage afbeelding',error);
+			return;
+		}
+
+		let result= data;
+		produkt.afbeeldingen=result.Key;
+		let {data2,error2} = await supabase.from('producten')
+		.update({afbeeldingen: [produkt.afbeeldingen] })
+		.eq('id', produkt.id);
+		if (error2) {
+			console.log('bijwerkenAfbeelding-> bijwerken produkt in database',error);
+			return
+		}
+		afbeelding = URL.createObjectURL(files[0]);
+	}
+		
 
 	const ophalenAfbeelding = async (afbeelding) => {
-		const { data, error } = await supabase.storage.from('produkten').download(afbeelding);
+		let split = afbeelding.split("/");
+		const { data, error } = await supabase.storage.from(split[0]).download(split[1]);
 		if (error) console.log('nee');
 		else return URL.createObjectURL(data);
 	};
@@ -48,6 +65,7 @@
 				.eq('id', produkt.id);
 			return;
 		}
+		
 
 		if (wat == 'categorie') {
 			await supabase
@@ -183,7 +201,7 @@
 		type="file"
 		bind:files
 		on:change={() => {
-			opladenAfbeelding();
+			bijwerkenAfbeelding();
 		}}
 		accept="image/*"
 	/>

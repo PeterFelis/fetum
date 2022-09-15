@@ -1,0 +1,215 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --geel:#F2C76E;
+  --licht: #eaf4f4;
+  --groen: #6b9080;
+  --donkergroen: #415e50;
+  --rood:#d7594d;
+  --paars:#ab92b9;
+  --achtergrond:#f8f8f8;
+  --oranje:#f5b06f;
+
+}
+html{
+  font-size: 40%;
+}
+
+body {
+  font-family: "Roboto";
+  font-size: 2rem;
+  overflow-x: hidden;
+  background-color:--var(--achtergrond);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Ubuntu";
+  color:var(--donkergroen);
+}
+
+h1 {
+  font-size: 4rem;
+  line-height: 1;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 3rem;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+h3 {
+  font-size: 2rem;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+p{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 400;
+  line-height: 2.8rem;
+}
+
+.font-bold{
+  font-weight: bold;
+}
+
+.container{
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+/* dit is de grid die van row naar col gaat bij klein */
+.grid-2{
+  display: grid;
+  grid-template-columns: 1fr;
+  place-items: center;
+}
+
+.gap1{
+  gap:1rem;
+}
+/* dit is de grid die altijd row blijft */
+.grid-2-col{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  place-items: center;
+}
+/*aanpassing mobiel -> padding links + padding kop/foot bij alles*/
+.divider{
+  padding:10rem 1rem 10rem 1rem;
+}
+
+button{
+  border:0;
+  padding:2rem;
+  background-color: var(--paars);
+  color:white;
+  border-radius: 8px;
+  font-size: 2rem;
+}
+
+
+
+.h25 {
+  height: 25vh;
+}
+.h50 {
+  height: 50vh;
+}
+.h75 {
+  height: 75vh;
+}
+.h100 {
+  height: 100vh;
+}
+
+.w100 {
+  width: 100vw;
+}
+
+.my1{
+  margin:1rem 0 1rem 0;
+}
+.my2{
+  margin:2rem 0 2rem 0;
+}
+.my3{
+  margin:3rem 0 3rem 0;
+}
+.my4{
+  margin:4rem 0 4rem 0;
+}
+.my8{
+  margin:8rem 0 8rem 0;
+}
+
+.py8{
+  padding:8em 0 8em 0;
+}
+
+
+.imgscale{
+  object-fit: cover;
+  background-position: center;
+}
+.parentfit{
+  height: 100%;
+  width: 100%;
+}
+.parentfitw {
+  width:100%;
+  height:auto;  
+}
+
+.rechts{
+  text-align: right;
+  width:100%;
+}
+.links{
+  text-align: left;
+  width: 100%;
+}
+.center{
+  text-align: center;
+}
+
+.groot{
+  font-size: 13rem;
+  line-height: 15rem;;
+}
+
+.cols{
+  column-count:2;
+  column-gap:2rem;
+}
+
+li{
+  list-style: none;
+}
+
+
+.bgrood{
+  background-color: red;
+}
+
+.bggroen{
+  background-color: green;
+}
+
+
+
+@media (min-width:700px){
+  html{
+    font-size: 62.5%;
+  }
+
+  .grid-2{
+    grid-template-columns: repeat(2,1fr);
+    place-items: center;
+  }
+
+  .container{
+    max-width: 1536px;
+  }
+
+  .cols{
+    column-count:3;
+    column-gap:6rem;
+  }
+
+  .px1{
+    padding:0;
+  }
+}

@@ -1,5 +1,5 @@
 <script>
-	import '../app.css';
+	import "../style.css";
 	import Menu from '$lib/Menu.svelte';
 </script>
 
@@ -7,14 +7,13 @@
 	<title>fetum</title>
 </svelte:head>
 
-<div class="font-Roboto overflow-hidden">
+<div>
 	<div class="logo">
 		<div class="bg" />
-		<img src="../fetumlogo.png" alt="fetum| Hoofdtelefoons" />
-		<div class="text-base ">0174 769-132</div>
+		<img class='parentfit imgfit' src="../fetumlogo.png" alt="fetum| Hoofdtelefoons" />
+		<div>0174 769-132</div>
 	</div>
 	<Menu />
-
 	<slot />
 </div>
 
@@ -24,7 +23,7 @@
 		flex-direction: column;
 		align-items: center;
 		gap: 10px;
-		width: 15vw;
+		width: 10vw;
 		min-width: 100px;
 		height: auto;
 		position: absolute;
