@@ -16,10 +16,12 @@
 		"@playwright/test": "^1.25.0",
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",
+		"@vitejs/plugin-basic-ssl": "^0.1.2",
 		"autoprefixer": "^10.4.8",
 		"eslint": "^8.16.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-svelte3": "^4.0.0",
+		"import": "^0.0.6",
 		"postcss": "^8.4.16",
 		"prettier": "^2.6.2",
 		"prettier-plugin-svelte": "^2.7.0",
@@ -31,6 +33,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@sendgrid/mail": "^7.7.0",
 		"@supabase/supabase-js": "^1.35.6"
 	}
 }

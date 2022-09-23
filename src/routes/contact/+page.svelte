@@ -1,63 +1,36 @@
-<script>
-
-const test = async () => {
-	console.log('test');
-     const response = await fetch("https://formsubmit.co/ajax/peter@felis.nl",{
-    
-        method: "post",
-        headers:{
-            'Content-Type' : 'application/json',
-            'Accept':'application/json'
-        },
-        body: JSON.stringify({
-            name:"FormSubmit",
-            message:"test"
-        })
-    })
-	console.log(response.status);
-    return(response.status);
-}
-
-let info;
-
-
-</script>
-
 <svelte:head>
 	<title>contact - let's talk | Fetum</title>
 </svelte:head>
 
-
-	<div class="grid-2 py8">
-		<div>
-			<h1 class="groot center">Contact<br>info</h1>
-			<h2 class="center">Altijd handig</h2>
-		</div>
-
-		<div class="grid-2-col gap1">
-			<div class="rechts">Naam</div>
-			<div class='links'>Fetum bv</div>
-			<div class="rechts">Adres</div>
-			<div class='links'>Grote Waard 36</div>
-			<div class="rechts">Postcode</div>
-			<div class='links'>2675 BX</div>
-			<div class="rechts">Plaats</div>
-			<div class='links'>Honselersdijk</div>
-			<div class="rechts">Telefoon:</div>
-			<div class='links'>+31 (0) 174 769132</div>
-			<div class="rechts">Mail</div>
-			<div class='links'>info@fetum.nl</div>
-			<div class="rechts">KvK</div>
-			<div class='links'>Den Haag 28045481</div>
-			<div class="rechts">BTW nummer:</div>
-			<div class='links'>801462.265.B01</div>
-			<div class="rechts">Bank</div>
-			<div class='links'>NL78 KNAB 0724 8909 47</div>
-			<div class="rechts">BIC</div>
-			<div class='links'>KNABNL2H</div>
-		</div>
+<div class="grid-2 py8">
+	<div>
+		<h1 class="groot center">Contact<br />info</h1>
+		<h2 class="center">Altijd handig</h2>
 	</div>
 
+	<div class="grid-2-col gap1">
+		<div class="rechts">Naam</div>
+		<div class="links">Fetum bv</div>
+		<div class="rechts">Adres</div>
+		<div class="links">Grote Waard 36</div>
+		<div class="rechts">Postcode</div>
+		<div class="links">2675 BX</div>
+		<div class="rechts">Plaats</div>
+		<div class="links">Honselersdijk</div>
+		<div class="rechts">Telefoon:</div>
+		<div class="links">+31 (0) 174 769132</div>
+		<div class="rechts">Mail</div>
+		<div class="links">info@fetum.nl</div>
+		<div class="rechts">KvK</div>
+		<div class="links">Den Haag 28045481</div>
+		<div class="rechts">BTW nummer:</div>
+		<div class="links">801462.265.B01</div>
+		<div class="rechts">Bank</div>
+		<div class="links">NL78 KNAB 0724 8909 47</div>
+		<div class="rechts">BIC</div>
+		<div class="links">KNABNL2H</div>
+	</div>
+</div>
 
 <div class="w100 h100">
 	<iframe
@@ -73,9 +46,13 @@ let info;
 	/>
 </div>
 
-
-	<button on:click="{()=>{console.log('klik') ; info = test()}}">test</button>
+<button
+	on:click={() => {
+		console.log('klik');
+		info = test();
+	}}>test</button
+>
 
 {#await info then info}
---{info}--
+	--{info}--
 {/await}
